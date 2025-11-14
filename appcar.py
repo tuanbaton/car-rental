@@ -38,7 +38,7 @@ if not os.path.exists(default_img):
         except:
             font = ImageFont.load_default()
         text = "No Image"
-        bbox = draw.textbbox((0, 0), text, font=font)
+        bbox = draw.textbbox((0, 0), ttext, font=font)
         text_width = bbox[2] - bbox[0]
         text_height = bbox[3] - bbox[1]
         position = ((800 - text_width) // 2, (600 - text_height) // 2)
@@ -1106,4 +1106,6 @@ print("ADMIN: admin@gmail.com / admin123")
 print("="*60)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
